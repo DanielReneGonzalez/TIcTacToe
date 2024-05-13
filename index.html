@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="script.js" ></script>
+    <title>Tic Tac Toe</title>
+    <script src="script.js" defer></script>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="buttons">
+            <button class="names-modal">Change Player names</button>
+            <button class="reset">Reset game</button>
+        </div>
+        <h1 class="player-turn"></h1>
+        <div class="board"></div>
+    </div>
+
+        <dialog>
+            <div>Changing player names will start a new game</div>
+            <form action="" method="dialog">
+                <label for="p1">Player 1:</label>
+                <input type="text" id="p1">
+
+                <label for="p2">Player 2:</label>
+                <input type="text" id="p2">
+
+                <button class="submitButton">Save Changes</button>
+            </form>
+        </dialog>
+
+
 </body>
 </html>
