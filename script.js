@@ -16,18 +16,19 @@ function gameboard (){
 
     const getBoard = () => board;
 
-    const placeMarker = (row, column, player) => {
-        if(board[row][column].getValue() !== '')
-            return 'Cell Played Already';
+    const placeToken = (row, column, player) => {
+        //Stops Player from playing taken cell. Ref line: 124 -131
+        if (board[row][column].getValue() !== "") 
+            return "error"
 
-        board[row][column].addMarker(player);
+        board[row][column].addToken(player)
     }
 
     initBoard();
 
     return {
         getBoard,
-        placeMarker,
+        placeToken,
     };
 
 }
@@ -35,14 +36,14 @@ function gameboard (){
 function cell() {
     let value = '';
 
-    const addMarker = (player) => {
+    const addToken = (player) => {
         value = player;
     };
 
     const getValue = () => value;
 
     return {
-        addMarker,
+        addToken,
         getValue,
     };
 
@@ -95,7 +96,7 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
         }
 
             if (board.getBoard()[0][0].getValue() === board.getBoard()[1][1].getValue() &&
-                board.getBoard()[1][1].getValue() === board.getBoard()[2][0].getValue() &&
+                board.getBoard()[1][1].getValue() === board.getBoard()[2][2].getValue() &&
                 board.getBoard()[0][0].getValue() !== '') {
                     result.win = true;
                     result.token = board.getBoard()[0][0].getValue();
@@ -120,13 +121,14 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
 
 
     const playRound = (row, column) => {
-        if (board.placeMarker(row, column, getActivePlayer().token) !== 'error') {
-            board.placeMarker(row, column, getActivePlayer().token);
-
+        if (board.placeToken(row, column, getActivePlayer().token) !== 'error') {
+            board.placeToken(row, column, getActivePlayer().token);
+                
             if (checkResult().win === true) return;
 
             switchPlayerTurn();
         }
+            else {alert( "Cell Taken")}
     }
 
     return {
@@ -192,8 +194,9 @@ function screenController(player1, player2) {
 
         if (!selectedColumn) return;
         if (!selectedRow) return;
-
+       
         game.playRound(selectedRow, selectedColumn)
+        
         updateScreen();
     }
 
