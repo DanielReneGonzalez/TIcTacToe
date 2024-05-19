@@ -169,7 +169,7 @@ function screenController(player1, player2) {
         } else {
             playerTurnDiv.textContent = `It's ${activePlayer.name}'s turn !`;
         }
-        // Creates board 
+        
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board[i].length; j++) {
                 const cellButton = document.createElement('button')
