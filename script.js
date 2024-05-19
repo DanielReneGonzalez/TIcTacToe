@@ -19,9 +19,10 @@ function gameboard (){
     const placeToken = (row, column, player) => {
         //Stops Player from playing taken cell. Ref line: 124 -131
         if (board[row][column].getValue() !== "") 
-            return "error"
-
-        board[row][column].addToken(player)
+            {return "error"}
+        else    {
+            board[row][column].addToken(player)
+        }
     }
 
     initBoard();
@@ -128,7 +129,6 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
 
             switchPlayerTurn();
         }
-            else {alert( "Cell Taken")}
     }
 
     return {
@@ -161,6 +161,8 @@ function screenController(player1, player2) {
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
         // Displays winner or active player
+
+
         if (result.win === true) {
             if (result.token === "tie") {
                 playerTurnDiv.textContent = "It's a tie game, no one wins !"
@@ -212,12 +214,12 @@ function screenController(player1, player2) {
         screenController(p1, p2);
     }
 
-    submitBtn.addEventListener('click', submitNames, { once: true });
+    submitBtn.addEventListener('click', submitNames, modal.close());
     boardDiv.addEventListener('click', clickHandlerBoard);
     resetBtn.addEventListener('click', resetDisplay, { once: true });
     playersBtn.addEventListener('click', () => {
         modal.showModal();
-    }, { once: true });
+    });
 
     updateScreen();
 
