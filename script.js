@@ -19,19 +19,17 @@ function gameboard (){
     const placeToken = (row, column, player) => {
 //Stops Player from playing taken cell. Ref line: 124 -131
         if (board[row][column].getValue() !== "") 
-            {return "error"}
-        else    {
-            board[row][column].addToken(player)
+            return "error";
+
+            board[row][column].addToken(player);
         }
-    }
 
     initBoard();
 
     return {
         getBoard,
         placeToken,
-    };
-
+    }
 }
 
 function cell() {
@@ -39,7 +37,7 @@ function cell() {
 
     const addToken = (player) => {
         value = player;
-    };
+    }
 
     const getValue = () => value;
 
@@ -50,14 +48,14 @@ function cell() {
 
 }
 
-function createPlayer(playerName,playerToken) {
+function createPlayer(playerName, playerToken) {
     const name = playerName;
     const token = playerToken;
 
     return {
         name,
         token
-    };
+    }
 }
 
 function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') {
@@ -65,7 +63,7 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
 
     const playerOne = createPlayer(playerOneName, 'X');
     const playerTwo = createPlayer(playerTwoName, 'O');
-    const players = [playerOne,playerTwo];
+    const players = [playerOne, playerTwo];
 
     let result = {
         win: false,
@@ -197,7 +195,6 @@ function screenController(player1, player2) {
         if (!selectedRow) return;
        
         game.playRound(selectedRow, selectedColumn)
-        
         updateScreen();
     }
 
@@ -213,12 +210,12 @@ function screenController(player1, player2) {
         screenController(p1, p2);
     }
 
-    submitBtn.addEventListener('click', submitNames, modal.close());
+    submitBtn.addEventListener('click', submitNames, { once: true });
     boardDiv.addEventListener('click', clickHandlerBoard);
-    resetBtn.addEventListener('click', resetDisplay, { once: true });
+    resetBtn.addEventListener('click', resetDisplay, {once:true});
     playersBtn.addEventListener('click', () => {
         modal.showModal();
-    });
+    }, { once: true });
 
     updateScreen();
 
