@@ -17,7 +17,7 @@ function gameboard (){
     const getBoard = () => board;
 
     const placeToken = (row, column, player) => {
-        //Stops Player from playing taken cell. Ref line: 124 -131
+//Stops Player from playing taken cell. Ref line: 124 -131
         if (board[row][column].getValue() !== "") 
             {return "error"}
         else    {
@@ -81,13 +81,14 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
 
     const checkResult = () => {
         for (let i = 0; i < 3; i++) {
+            //Check columns
             if (board.getBoard()[0][i].getValue() === board.getBoard()[1][i].getValue() &&
                 board.getBoard()[1][i].getValue() === board.getBoard()[2][i].getValue() &&
                 board.getBoard()[0][i].getValue() !== '') {
                     result.win = true;
                     result.token = board.getBoard()[0][i].getValue();
                 }
-
+            //Check rows
             if (board.getBoard()[i][0].getValue() === board.getBoard()[i][1].getValue() &&
                 board.getBoard()[i][1].getValue() === board.getBoard()[i][2].getValue() &&
                 board.getBoard()[i][0].getValue() !== '') {
@@ -95,7 +96,7 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
                     result.token = board.getBoard()[i][0].getValue();
                 }
         }
-
+            //Check diagonal
             if (board.getBoard()[0][0].getValue() === board.getBoard()[1][1].getValue() &&
                 board.getBoard()[1][1].getValue() === board.getBoard()[2][2].getValue() &&
                 board.getBoard()[0][0].getValue() !== '') {
@@ -109,7 +110,7 @@ function gameController(playerOneName = 'Player 1', playerTwoName = 'Player 2') 
                     result.win = true;
                     result.token = board.getBoard()[0][2].getValue();
                 }
-
+            //Check tie 
             if (board.getBoard().every(row => row.every(cell => cell.getValue() !== ''))) {
                 result.win = true;
                 result.token = 'tie';
@@ -160,9 +161,7 @@ function screenController(player1, player2) {
 
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
-        // Displays winner or active player
-
-
+        
         if (result.win === true) {
             if (result.token === "tie") {
                 playerTurnDiv.textContent = "It's a tie game, no one wins !"
@@ -172,7 +171,7 @@ function screenController(player1, player2) {
         } else {
             playerTurnDiv.textContent = `It's ${activePlayer.name}'s turn !`;
         }
-        // Creates board button display
+        // Creates board 
         for (let i = 0; i < board.length; i++) {
             for (let j = 0; j < board[i].length; j++) {
                 const cellButton = document.createElement('button')
