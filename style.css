@@ -68,15 +68,6 @@ button.cell:hover:enabled {
     background-color: #4BB3FD;
 }
 
-button.rest,
-button.name-modal {
-    background-color: #d1d5db;
-    border: none;
-    padding: 10px 30px;
-    border-radius: 20px;
-    font-size: 1rem;
-}
-
 div.player-turn {
     transition: all 1s;
 }
@@ -84,6 +75,12 @@ div.player-turn {
 dialog {
     border: none;
     border-radius: 20px;
+    background-color: #EFD9CE;
+}
+
+#p1,
+#p2 {
+    background-color: #fffafa;
 }
 
 dialog::backdrop {
@@ -95,6 +92,13 @@ dialog div {
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+}
+
+.submitButton {
+    border-radius: 15px;
+    width: fit-content;
+    align-self: center;
+    background-color: #87A878;
 }
 
 .form {
