@@ -6,8 +6,16 @@
     <title>Tic Tac Toe</title>
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="title">
+        <p>Tic Tac Toe</p>
+    </div>
+
+
     <div class="container">
         <div class="buttons">
             <button class="names-modal">Change Player names</button>
@@ -19,12 +27,16 @@
 
         <dialog>
             <div>Changing player names will start a new game</div>
-            <form action="" method="dialog">
-                <label for="p1">Player 1:</label>
-                <input type="text" id="p1">
+            <form action="" method="dialog" class="form">
+                    <div>
+                        <label for="p1">Player 1:</label>
+                        <input type="text" id="p1">
+                    </div>
 
-                <label for="p2">Player 2:</label>
-                <input type="text" id="p2">
+                    <div>
+                        <label for="p2">Player 2:</label>
+                        <input type="text" id="p2">
+                    </div>
 
                 <button class="submitButton">Save Changes</button>
             </form>
